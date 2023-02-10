@@ -8,5 +8,6 @@
 </ul>
 <div (click)="showMyContainer=!showMyContainer" (click)="focusTextInput()" class="alturatotal"></div>
 <div *ngIf="showMyContainer">
-    <input #input class="botaolongo embaixo" (keyup.enter)="addTask(input.value)"  (keyup.enter)="input.value='' ">
+    <input #input  (click)="addTask(input.value)"  (click)="input.value='' " class="botaolongo embaixo"  (keyup.enter)="addTask(input.value)"  (keyup.enter)="input.value=''   ">
+    <div class="botaolongo alturatotal hid" (click)="addTask(input.value)"  (click)="input.value='' "></div>
 </div>
