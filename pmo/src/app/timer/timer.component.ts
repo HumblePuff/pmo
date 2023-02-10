@@ -9,7 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 export class TimerComponent implements OnInit {
 
   @Input() pauseEnabled: boolean = false;
-  @Input() duration: number = 6;
+  @Input() duration: number = 1500;
   remaining: number;
 
   private countdownSub: Subscription;
