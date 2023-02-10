@@ -8,10 +8,19 @@
 
 .alturatotal{
     height: 100vh;
-    color: #fff;
+    color: rgb(207, 207, 207);
     width: 100vw;
 }
 
+input {
+    color: black;
+    background-color: rgb(73, 121, 0);
+    padding-left: 0px;
+    border: 2px solid;
+    border-color: rgb(90, 0, 0);
+    color: rgb(207, 207, 207);
+    background-color: black;
+}
 
 .embaixo{
     position: fixed;
@@ -19,7 +28,7 @@
 }
 
 .hid{
-    background-color: blue;
+    background-color: rgb(0, 0, 71);
     z-index: 10;
     top: 100px;
     position: fixed;
@@ -32,8 +41,8 @@
     margin-block-start: 0px;
     padding-left: 0px;
     border: 2px solid;
-    border-color: red;
-    color: white;
+    border-color: rgb(90, 0, 0);
+    color: rgb(207, 207, 207);
     background-color: black;
     
 }
