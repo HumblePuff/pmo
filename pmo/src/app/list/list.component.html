@@ -1,24 +1,12 @@
-
-
 <ul *ngFor="let task of tasks">
     <button (click)="removeTask(task)" class="botaolongo">
         <ul class="list-group" *ngFor="let todo of todoList">
             <app-todo [id]='todo' (delete)="deleteItem($event)"></app-todo>
         </ul>
-        
-        
         <app-todo [id]='todo' (delete)="deleteItem($event)" class="botaolongo">{{task}}</app-todo>
     </button>
-    
 </ul>
-<div (click)="showMyContainer=!showMyContainer" class="alturatotal"></div>
-
-
-
-
+<div (click)="showMyContainer=!showMyContainer" (click)="focusTextInput()" class="alturatotal"></div>
 <div *ngIf="showMyContainer">
     <input #input class="botaolongo embaixo" (keyup.enter)="addTask(input.value)"  (keyup.enter)="input.value='' ">
 </div>
-
-
-
