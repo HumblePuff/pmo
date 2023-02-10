@@ -18,6 +18,7 @@ export class TimerComponent implements OnInit {
   isPaused: boolean = false;
   isDisabled: boolean = false;
 
+
   private crankAudio: HTMLAudioElement;
   private tickingAudio: HTMLAudioElement;
   private dingAudio: HTMLAudioElement;
