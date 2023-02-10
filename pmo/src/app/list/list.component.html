@@ -1,7 +1,7 @@
-<ul *ngFor="let task of tasks">
-    <button (click)="removeTask(task)" class="botaolongo">
-        <ul class="list-group" *ngFor="let todo of todoList">
-            <app-todo [id]='todo' (delete)="deleteItem($event)"></app-todo>
+<ul *ngFor="let task of tasks" class="lis">
+    <button (click)="removeTask(task)" class="botaolongo lis">
+        <ul  *ngFor="let todo of todoList">
+            <app-todo [id]='todo'  (delete)="deleteItem($event)"></app-todo>
         </ul>
         <app-todo [id]='todo' (delete)="deleteItem($event)" class="botaolongo">{{task}}</app-todo>
     </button>
