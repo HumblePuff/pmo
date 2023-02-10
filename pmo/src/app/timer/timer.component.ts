@@ -9,7 +9,7 @@ import { Observable, Subscription } from 'rxjs';
 export class TimerComponent implements OnInit {
 
   @Input() pauseEnabled: boolean = false;
-  @Input() duration: number = 1200;
+  @Input() duration: number = 6;
   remaining: number;
 
   private countdownSub: Subscription;
@@ -22,10 +22,14 @@ export class TimerComponent implements OnInit {
   private tickingAudio: HTMLAudioElement;
   private dingAudio: HTMLAudioElement;
 
+  
+
   constructor() { }
 
   ngOnInit() {
     this.remaining = this.duration;
+    this.crankAudio = new Audio('../assets/aud/crank.wav');
+    this.dingAudio = new Audio('../assets/aud/ding.wav');
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -36,7 +40,7 @@ export class TimerComponent implements OnInit {
 
   start() {
     this.remaining = this.duration;
-    this.crankAudio?.play().then(() => this.tickingAudio?.play());
+    this.crankAudio.play();
     this.unpause();
   }
 
@@ -94,6 +98,10 @@ export class TimerComponent implements OnInit {
       }
     );
       }
+
+
+
+
 
 }
 
