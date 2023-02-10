@@ -5,7 +5,14 @@
     margin-left: -50;
 }
 
-.embaixo {
-    position: relative;
-    margin-bottom: 0;
+.alturatotal{
+    height: 500px;
+    color: #fff;
+    width: 500px;
+}
+
+
+.embaixo{
+    position: fixed;
+    bottom: 0;
 }

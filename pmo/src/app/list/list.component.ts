@@ -9,6 +9,7 @@ export class ListComponent implements OnInit {
 
   newTask: string;
   tasks: string[] = [];
+  showMyContainer: boolean = false;
 
   addTask(v) {
     this.tasks.push(v);

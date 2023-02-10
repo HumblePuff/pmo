@@ -1,4 +1,4 @@
 <button type="button" class="botaopomodoro" (click)="isRunning ? stop() : start()">
-    <p class="movepracima">{{ remaining }}</p>
+    <p class="movepracima">{{ remaining | timerDisplay }}</p>
     </button>
     
