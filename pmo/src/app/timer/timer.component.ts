@@ -52,6 +52,21 @@ export class TimerComponent implements OnInit {
     this.remaining = this.duration;
     this.crankAudio = new Audio('../assets/aud/crank.wav');
     this.dingAudio = new Audio('../assets/aud/ding.wav');
+
+
+    
+      document.addEventListener('keydown', (event) => {
+        if (event.code === 'Numpad0') {
+          this.isRunning ? null : this.start();
+          
+        }
+      });
+    
+    
+
+
+
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
