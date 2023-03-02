@@ -29,11 +29,24 @@ export class ListComponent implements OnInit {
       this.tasks = JSON.parse(storedTasks);
     }
   }
-
   removeTask(task: string) {
     this.tasks = this.tasks.filter(t => t !== task);
     localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
   ngOnInit(): void {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Tab') {
+        if (this.showMyContainer != true) {
+          this.showMyContainer = true;
+        }
+        else {  
+          this.addTask(this.input.nativeElement.value);
+          this.input.value='';
+          this.showMyContainer = false;   
+        }
+      }
+      this.focusTextInput();
+    }
+    );
   }
 }
