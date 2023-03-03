@@ -13,7 +13,7 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
-  duration: number = 5;
+  duration: number = 1500;
   remaining: number;
   private countdownSub: Subscription;
   isRunning: boolean = false;
