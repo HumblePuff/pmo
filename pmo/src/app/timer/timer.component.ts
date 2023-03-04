@@ -79,6 +79,23 @@ export class TimerComponent implements OnInit {
     this.remaining = this.duration;
     this.crankAudio.play();
     this.unpause();
+
+    let points = localStorage.getItem('points');
+    const ultimodia = localStorage.getItem('dia');
+    const diaatual = new Date();
+
+    if ( ultimodia != diaatual.getDate().toString() ) {
+      this.points = Number(localStorage.getItem('points'));
+      this.points += 8;
+      localStorage.setItem('points', JSON.stringify(this.points));
+      localStorage.setItem('dia', diaatual.getDate().toString());
+    }
+
+    
+    this.points = JSON.parse(points);
+
+
+    
   }
 
   stop() {
