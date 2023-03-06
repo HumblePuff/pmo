@@ -1,15 +1,21 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.scss']
+  styleUrls: ['./timer.component.scss'],
 })
 export class TimerComponent implements OnInit {
-
   @Input() pauseEnabled: boolean = false;
-  @Input() duration: number = 600;
+  @Input() duration: number = 1500;
   remaining: number;
 
   private countdownSub: Subscription;
@@ -18,14 +24,29 @@ export class TimerComponent implements OnInit {
   isPaused: boolean = false;
   isDisabled: boolean = false;
 
-
   private crankAudio: HTMLAudioElement;
   private tickingAudio: HTMLAudioElement;
   private dingAudio: HTMLAudioElement;
 
-  
+  points: number = 0;
 
-  constructor() { }
+  constructor(private host: ElementRef) {
+
+    let points = localStorage.getItem('points');
+    const ultimodia = localStorage.getItem('dia');
+    const diaatual = new Date();
+
+    if ( ultimodia != diaatual.getDate().toString() ) {
+      this.points = Number(localStorage.getItem('points'));
+      this.points += 8;
+      localStorage.setItem('points', JSON.stringify(this.points));
+      localStorage.setItem('dia', diaatual.getDate().toString());
+    }
+
+    
+    this.points = JSON.parse(points);
+    
+  }
 
   ngOnInit() {
     this.remaining = this.duration;
@@ -67,7 +88,10 @@ export class TimerComponent implements OnInit {
   }
 
   get showPauseButton() {
-    return this.pauseEnabled && (this.countdownSub && !this.countdownSub.closed || this.isPaused);
+    return (
+      this.pauseEnabled &&
+      ((this.countdownSub && !this.countdownSub.closed) || this.isPaused)
+    );
   }
 
   setDisabled(value: boolean) {
@@ -76,7 +100,7 @@ export class TimerComponent implements OnInit {
 
   private startCountdown(duration: number) {
     // declare countdown observable
-    let countdown: Observable<number> = new Observable<number>(subscriber => {
+    let countdown: Observable<number> = new Observable<number>((subscriber) => {
       subscriber.next(duration);
       let timer = setInterval(() => {
         subscriber.next(--duration);
@@ -89,20 +113,20 @@ export class TimerComponent implements OnInit {
 
     // subscribe to the newly created observable to update the UI variables.
     this.countdownSub = countdown.subscribe(
-      value => {
+      (value) => {
         this.remaining = value;
       },
-      err => { },
+      (err) => {},
       () => {
-        if (this.isRunning) { this.dingAudio?.play() };
+        if (this.isRunning) {
+          this.dingAudio?.play();
+        }
+
+        this.points--;
+        localStorage.setItem('points', JSON.stringify(this.points));
+
         this.stop();
       }
     );
-      }
-
-
-
-
-
+  }
 }
-

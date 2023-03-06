@@ -1,5 +1,17 @@
-<button type="button" [disabled]="isRunning" class="botaopomodoro" (click)="isRunning ? null : start()"             [ngClass]="isRunning != true ? 'vermelho' : 'preto'"             >
-    <p class="movepracima">{{ remaining | timerDisplay }}</p>
-    </button>
-    
-    
+<button
+  type="button"
+  [disabled]="isRunning"
+  class="botaopomodoro"
+  (click)="isRunning ? null : start()"
+  [ngClass]="isRunning != true ? 'vermelho' : 'preto'"
+>
+  <p class="movepracima">
+    <span class="left">
+      {{ points }}
+    </span>
+
+    <span class="right">
+    {{ remaining | timerDisplay }}
+    </span>
+  </p>
+</button>
